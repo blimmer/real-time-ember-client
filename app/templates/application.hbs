@@ -1,3 +1,11 @@
-<h2 id="title">Welcome to Ember</h2>
+{{site-header}}
 
-{{outlet}}
+{{#if isOnline}}
+  {{outlet}}
+{{else}}
+  <div class='offline'>
+    <div class='connecting-to-socket'>
+      <h1>Connecting...</h1>
+    </div>
+  </div>
+{{/if}}

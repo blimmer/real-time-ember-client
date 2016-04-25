@@ -1,0 +1,11 @@
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools">
+    <span>Real Time Ember</span>
+
+    {{#if rtEmberSocket.online}}
+      <span class='led led-green' title='Online'></span>
+    {{else}}
+      <span class='led led-red' title='Offline'></span>
+    {{/if}}
+  </div>
+{{/paper-toolbar}}

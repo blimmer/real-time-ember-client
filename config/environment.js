@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'draw-it',
+    modulePrefix: 'real-time-ember',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -16,7 +16,9 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    websockets: { },
   };
 
   if (environment === 'development') {
@@ -25,6 +27,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.apiEndpoint = 'http://localhost:5000';
+    ENV.websockets.host = 'ws://localhost:5000/';
   }
 
   if (environment === 'test') {
@@ -40,7 +44,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    const heroku = 'real-time-ember.herokuapp.com';
 
+    ENV.websockets.host = 'ws://' + heroku;
+    ENV.apiEndpoint = 'http://' + heroku;
   }
 
   return ENV;

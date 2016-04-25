@@ -1,0 +1,9 @@
+<div class='shared-gif'>
+  <img src={{sharedGif.url}} />
+</div>
+
+<div class='suggestions'>
+  {{#each gifs as |gif|}}
+    <img {{action shareGif gif}} class='gif thumbnail' src={{gif.url}} />
+  {{/each}}
+</div>
