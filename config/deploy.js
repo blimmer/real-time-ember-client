@@ -21,31 +21,16 @@ module.exports = function(deployTarget) {
       bucket: 'real-time-ember',
       region: 'us-west-2',
       allowOverwrite: true,
-    },
-
-    notifications: {
-      services: {
-        nodeNotifyClients: {
-          body: function() {
-            return {
-              token: process.env.NOTIFY_TOKEN
-            };
-          },
-          didActivate: true,
-        }
-      }
     }
   };
 
   if (deployTarget === 'development') {
     ENV.build.environment = 'development';
-    ENV.notifications.services.nodeNotifyClients.url = 'http://localhost:5000/api/v1/notify-upgrade';
     // configure other plugins for development deploy target here
   }
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
-    ENV.notifications.services.nodeNotifyClients.url = 'http://real-time-ember.herokuapp.com/api/v1/notify-upgrade';
     // configure other plugins for production deploy target here
   }
 
